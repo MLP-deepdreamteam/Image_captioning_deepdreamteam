@@ -16,8 +16,8 @@ def read_img(fname) :
   img = load_img(fname , target_size=(150,150))
   x = img_to_array(img) 
   images = np.expand_dims(x, axis=0)
-  images = images.astype('float')
-  images = images / 255.0
+#   images = images.astype('float')
+#   images = images / 255.0
   return images
 
 @app.route('/',methods=('GET', 'POST')) # 접속하는 url
