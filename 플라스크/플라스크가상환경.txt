@@ -1,0 +1,11 @@
+플라스크 가상환경설정
+
+pip install virtualenv (가상환경 라이브러리 설치)
+
+virtualenv 가상환경명 (가상환경명 으로 가상환경 생성)
+
+source 가상환경명/Scripts/activate 가상환경 활성화
+
+pip install flask 플라스크설치
+
+app.py 우클릭 터미널에서 파이썬파일 실행
