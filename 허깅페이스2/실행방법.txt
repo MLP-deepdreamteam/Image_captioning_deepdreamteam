@@ -1,7 +1,0 @@
-1) python -m venv '가상환경명'
-2) source '가상환경명'/Scripts/activate
-3) pip install -r requirement.txt ( 설치할게 좀 많아서 시간소요됨 )
-4) app.py 우클릭 터미널에서 python 파일 실행 클릭
-5) 조금 기다리면 터미널창에서 local 주소 뜨면 컨트롤 클릭
-
-6) 서버 나오고싶으면 Ctrl+c 2번
