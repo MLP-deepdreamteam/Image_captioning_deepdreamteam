@@ -16,6 +16,9 @@ from io import BytesIO
 
 
 
+
+
+
 #Flask 객체 인스턴스 생성
 app = Flask(__name__)
 model = tf.keras.models.load_model('dog_cat_model.h5')
@@ -27,6 +30,11 @@ def read_img(fname) :
 #   images = images.astype('float')
 #   images = images / 255.0
   return images
+
+def convert_to_jpeg(input_file, output_file):
+  image = Image.open(input_file)
+  image_rgb = image.convert('RGB')  # Convert to RGB mode, as JPEG doesn't support alpha channel (transparency)
+  image_rgb.save(output_file, "JPEG", quality=90)
 
 
 # naver papago open api 
@@ -63,6 +71,8 @@ def upload():
         # file.save(os.path.join('static', filename))
         file_path = os.path.join('static/images',new_filename)
         file.save(file_path)
+        convert_to_jpeg(file_path,file_path)
+
         images = read_img(file_path)
        
         
