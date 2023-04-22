@@ -43,15 +43,23 @@ def read_img(fname) :
 #     return response.json()['message']['result']['translatedText']
   
   
-@app.route('/',methods=('GET', 'POST')) #url
+@app.route('/service',methods=('GET', 'POST')) #url
 def index():
     return render_template('index.html')
+
+@app.route('/')  
+def home():
+    return render_template('home.html')
+
+@app.route('/project')  
+def project():
+    return render_template('project.html')
 
 @app.route('/predict', methods=['GET','POST'])
 def upload():
     if request.method == 'POST':
        
-        file = request.files['file']
+        file = request.files['image']
 
         filename = file.filename
         filename, extension = os.path.splitext(file.filename)
@@ -74,7 +82,7 @@ def upload():
         id_key = int(id_key)
         
          # insert the image data into SQLite
-         #아직 이미지데이터가 db에 안들어감
+         #DB 연동 테스트
         # conn = sqlite3.connect('coco30k_F_v4.db')
         # cursor = conn.cursor()
         # cursor.execute("INSERT INTO customer_image VALUES (?, ?, ?)", (id_key, bi_img, timestamp))
