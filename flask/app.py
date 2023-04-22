@@ -98,7 +98,9 @@ def upload():
         # cursor.execute("INSERT INTO customer_image VALUES (?, ?, ?)", (id_key, bi_img, timestamp))
         # conn.commit()
         # conn.close()
-
+        # features
+        feature = feature_extract.extract_features(file_path, CNN_Encoder)
+        print(type(feature), feature.shape)
         pred = feature_extract.extract_caption(file_path,caption_model,CNN_Encoder)
 
         # prediction = model.predict(images , batch_size=10)
