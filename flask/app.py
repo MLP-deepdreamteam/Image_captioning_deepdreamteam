@@ -13,6 +13,8 @@ import sqlite3
 import base64
 from io import BytesIO
 
+import our_model
+import feature_extract
 
 
 
@@ -88,12 +90,16 @@ def upload():
         # cursor.execute("INSERT INTO customer_image VALUES (?, ?, ?)", (id_key, bi_img, timestamp))
         # conn.commit()
         # conn.close()
+        
+        caption_model = our_model.define_our_model()
+        our_model.load_model(caption_model)
+        pred = feature_extract.extract_caption(file_path,caption_model)
 
-        prediction = model.predict(images , batch_size=10)
-        if prediction[0] > 0 :
-            pred = "This image is a puppy image."
-        else :
-            pred = 'This image is a cat image.'
+        # prediction = model.predict(images , batch_size=10)
+        # if prediction[0] > 0 :
+        #     pred = "This image is a puppy image."
+        # else :
+        #     pred = 'This image is a cat image.'
         # trans = translate(pred)
         
         
