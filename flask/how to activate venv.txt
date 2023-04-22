@@ -1,0 +1,13 @@
+플라스크 가상환경설정
+
+pip install virtualenv (가상환경 라이브러리 설치)
+
+virtualenv 가상환경명 (가상환경명 으로 가상환경 생성)
+
+------------------------------------------------------------- 가상환경이 이미있으므로 위는 안해도 됨
+
+source 가상환경명/Scripts/activate 가상환경 활성화
+
+pip install flask 플라스크설치 ( pip install -r requirement.txt  해주셔도 됨 )
+
+가상환경 실행후 터미널에 python app.py 입력
