@@ -23,7 +23,7 @@ import feature_extract
 
 #Flask 객체 인스턴스 생성
 app = Flask(__name__)
-model = tf.keras.models.load_model('dog_cat_model.h5')
+# model = tf.keras.models.load_model('dog_cat_model.h5')
 
 def read_img(fname) :
   img = load_img(fname , target_size=(150,150))
