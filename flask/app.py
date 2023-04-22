@@ -13,6 +13,8 @@ import sqlite3
 import base64
 from io import BytesIO
 
+import our_model
+import feature_extract
 
 
 
@@ -51,15 +53,23 @@ def convert_to_jpeg(input_file, output_file):
 #     return response.json()['message']['result']['translatedText']
   
   
-@app.route('/',methods=('GET', 'POST')) #url
+@app.route('/service',methods=('GET', 'POST')) #url
 def index():
     return render_template('index.html')
+
+@app.route('/')  
+def home():
+    return render_template('home.html')
+
+@app.route('/project')  
+def project():
+    return render_template('project.html')
 
 @app.route('/predict', methods=['GET','POST'])
 def upload():
     if request.method == 'POST':
        
-        file = request.files['file']
+        file = request.files['image']
 
         filename = file.filename
         filename, extension = os.path.splitext(file.filename)
@@ -84,18 +94,22 @@ def upload():
         id_key = int(id_key)
         
          # insert the image data into SQLite
-         #아직 이미지데이터가 db에 안들어감
+         #DB 연동 테스트
         # conn = sqlite3.connect('coco30k_F_v4.db')
         # cursor = conn.cursor()
         # cursor.execute("INSERT INTO customer_image VALUES (?, ?, ?)", (id_key, bi_img, timestamp))
         # conn.commit()
         # conn.close()
+        
+        caption_model = our_model.define_our_model()
+        our_model.load_model(caption_model)
+        pred = feature_extract.extract_caption(file_path,caption_model)
 
-        prediction = model.predict(images , batch_size=10)
-        if prediction[0] > 0 :
-            pred = "This image is a puppy image."
-        else :
-            pred = 'This image is a cat image.'
+        # prediction = model.predict(images , batch_size=10)
+        # if prediction[0] > 0 :
+        #     pred = "This image is a puppy image."
+        # else :
+        #     pred = 'This image is a cat image.'
         # trans = translate(pred)
         
         
