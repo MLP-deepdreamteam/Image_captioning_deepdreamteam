@@ -21,7 +21,8 @@ import feature_extract
 #Flask 객체 인스턴스 생성
 app = Flask(__name__)
 model = tf.keras.models.load_model('dog_cat_model.h5')
-
+flag=0
+print(flag)
 def read_img(fname) :
   img = load_img(fname , target_size=(150,150))
   x = img_to_array(img) 
@@ -43,10 +44,17 @@ def read_img(fname) :
 #     data = {'source': 'en', 'target': 'ko', 'text': text}
 #     response = requests.post(url, json.dumps(data), headers=headers)
 #     return response.json()['message']['result']['translatedText']
-  
+
   
 @app.route('/service',methods=('GET', 'POST')) #url
 def index():
+    global caption_model, CNN_Encoder, flag 
+    caption_model = our_model.define_our_model()
+
+    if flag ==0: 
+        our_model.load_model(caption_model)
+        CNN_Encoder = feature_extract.define_CNN_Encoder()
+        flag +=1 
     return render_template('index.html')
 
 @app.route('/')  
@@ -90,10 +98,8 @@ def upload():
         # cursor.execute("INSERT INTO customer_image VALUES (?, ?, ?)", (id_key, bi_img, timestamp))
         # conn.commit()
         # conn.close()
-        
-        caption_model = our_model.define_our_model()
-        our_model.load_model(caption_model)
-        pred = feature_extract.extract_caption(file_path,caption_model)
+
+        pred = feature_extract.extract_caption(file_path,caption_model,CNN_Encoder)
 
         # prediction = model.predict(images , batch_size=10)
         # if prediction[0] > 0 :

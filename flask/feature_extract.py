@@ -102,10 +102,13 @@ def generate_desc(model, tokenizer, photo, max_length):
     return in_text, attention_weights_array
 
 
-
-def extract_caption(image_filepath,model):
+def define_CNN_Encoder():
     CNN_model = Xception(include_top=False, pooling="avg")
     # CNN_model.summary()
+    return CNN_model
+    
+
+def extract_caption(image_filepath,model,CNN_model):
     photo = extract_features(image_filepath, CNN_model)
     # print(photo.shape)
     tokenizer = load_tokenizer("my_tokenizer_230422.pkl")
