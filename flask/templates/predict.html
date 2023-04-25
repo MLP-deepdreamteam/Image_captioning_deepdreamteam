@@ -16,7 +16,12 @@
     <br>
     ID : {{id_key}}
     <br>
+    <audio controls>
+        <source src="{{ audio_file }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    <br>
+
     <a href="{{ url_for('index') }}">Back</a>
-    
 </body>
 </html>

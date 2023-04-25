@@ -15,6 +15,7 @@ from io import BytesIO
 
 import our_model
 import feature_extract
+import test_tts
 
 
 
@@ -111,12 +112,14 @@ def upload():
         # else :
         #     pred = 'This image is a cat image.'
 
-        trans = "대기"
+        # trans = "대기"
+        trans = translate(pred[7:-5])
+        test_tts.create_tts(trans)
+        audio_file = 'static/audios/output.mp3'
 
-        # trans = translate(pred[7:-5])
         
         
-    return render_template('predict.html', fileimg = file_path , pred = pred, id_key = id_key, trans = trans)
+    return render_template('predict.html', fileimg = file_path , pred = pred, id_key = id_key, trans = trans,audio_file = audio_file)
     
 # def speak(text):
 
