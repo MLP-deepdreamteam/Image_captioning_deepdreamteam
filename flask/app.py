@@ -20,7 +20,7 @@ import feature_extract
 
 #Flask 객체 인스턴스 생성
 app = Flask(__name__)
-model = tf.keras.models.load_model('dog_cat_model.h5')
+# model = tf.keras.models.load_model('dog_cat_model.h5')
 flag=0
 print(flag)
 def read_img(fname) :
@@ -33,17 +33,19 @@ def read_img(fname) :
 
 
 # naver papago open api 
-# def translate(text, source='en', target='ko'):
-#     CLIENT_ID, CLIENT_SECRET = 'iICkLuA8cumOEp9WwpWR', 'qJyQVZ7yNj'
-#     url = 'https://openapi.naver.com/v1/papago/n2mt'
-#     headers = {
-#         'Content-Type': 'application/json',
-#         'X-Naver-Client-Id': CLIENT_ID,
-#         'X-Naver-Client-Secret': CLIENT_SECRET
-#     }
-#     data = {'source': 'en', 'target': 'ko', 'text': text}
-#     response = requests.post(url, json.dumps(data), headers=headers)
-#     return response.json()['message']['result']['translatedText']
+def translate(text, source='en', target='ko'):
+    CLIENT_ID, CLIENT_SECRET = 'iICkLuA8cumOEp9WwpWR', 'qJyQVZ7yNj'
+    url = 'https://openapi.naver.com/v1/papago/n2mt'
+    headers = {
+        'Content-Type': 'application/json',
+        'X-Naver-Client-Id': CLIENT_ID,
+        'X-Naver-Client-Secret': CLIENT_SECRET
+    }
+    data = {'source': 'en', 'target': 'ko', 'text': text}
+    response = requests.post(url, json.dumps(data), headers=headers)
+    
+    print("translation on Proces")
+    return response.json()['message']['result']['translatedText']
 
   
 @app.route('/service',methods=('GET', 'POST')) #url
@@ -108,10 +110,13 @@ def upload():
         #     pred = "This image is a puppy image."
         # else :
         #     pred = 'This image is a cat image.'
-        # trans = translate(pred)
+
+        trans = "대기"
+
+        # trans = translate(pred[7:-5])
         
         
-    return render_template('predict.html', fileimg = file_path , pred = pred, id_key = id_key)
+    return render_template('predict.html', fileimg = file_path , pred = pred, id_key = id_key, trans = trans)
     
 # def speak(text):
 
