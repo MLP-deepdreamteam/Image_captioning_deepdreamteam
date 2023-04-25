@@ -41,10 +41,7 @@ def define_our_model(total_words = 9000, max_length = 26):
     # 윤성(230417/230419)
     # encoder_input = Input(shape=(576,))
     # encoder_input = Input(shape=(512,))
-    encoder_input = Input(shape=(2048,)) # xception
-
-    l2_lambda = 0.001
-    fe1 = Dense(embedding_dim, activation='relu', kernel_regularizer=l2(l2_lambda))(encoder_input)        
+    p      
     # fe1 = Dense(embedding_dim, activation='relu')(encoder_input)
 
     fe2 = Dropout(0.5)(fe1)

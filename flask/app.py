@@ -45,19 +45,12 @@ def translate(text, source='en', target='ko'):
     data = {'source': 'en', 'target': 'ko', 'text': text}
     response = requests.post(url, json.dumps(data), headers=headers)
     
-    print("translation on Proces")
+    print("translation on Process")
     return response.json()['message']['result']['translatedText']
 
   
 @app.route('/service',methods=('GET', 'POST')) #url
 def index():
-    global caption_model, CNN_Encoder, flag 
-    caption_model = our_model.define_our_model()
-
-    if flag ==0: 
-        our_model.load_model(caption_model)
-        CNN_Encoder = feature_extract.define_CNN_Encoder()
-        flag +=1 
     return render_template('index.html')
 
 @app.route('/')  
@@ -70,8 +63,16 @@ def project():
 
 @app.route('/predict', methods=['GET','POST'])
 def upload():
-    if request.method == 'POST':
        
+    global caption_model, CNN_Encoder, flag 
+
+    if flag ==0: 
+        caption_model = our_model.define_our_model()
+        our_model.load_model(caption_model)
+        CNN_Encoder = feature_extract.define_CNN_Encoder()
+        flag +=1 
+
+    if request.method == 'POST':
         file = request.files['image']
 
         filename = file.filename
@@ -86,7 +87,6 @@ def upload():
         file.save(file_path)
         images = read_img(file_path)
        
-        
 
         current_time = datetime.now()
         timestamp = int(current_time.timestamp())
@@ -102,15 +102,10 @@ def upload():
         # conn.commit()
         # conn.close()
         # features
-        feature = feature_extract.extract_features(file_path, CNN_Encoder)
-        print(type(feature), feature.shape)
-        pred = feature_extract.extract_caption(file_path,caption_model,CNN_Encoder)
 
-        # prediction = model.predict(images , batch_size=10)
-        # if prediction[0] > 0 :
-        #     pred = "This image is a puppy image."
-        # else :
-        #     pred = 'This image is a cat image.'
+        feature = feature_extract.extract_features(file_path, CNN_Encoder)
+        # print(type(feature), feature.shape)
+        pred = feature_extract.extract_caption(file_path,caption_model,CNN_Encoder)
 
         # trans = "대기"
         trans = translate(pred[7:-5])
@@ -119,7 +114,7 @@ def upload():
 
         
         
-    return render_template('predict.html', fileimg = file_path , pred = pred, id_key = id_key, trans = trans,audio_file = audio_file)
+    return render_template('predict.html', fileimg = file_path , pred = pred[7:-5], id_key = id_key, trans = trans,audio_file = audio_file)
     
 # def speak(text):
 

@@ -8,7 +8,7 @@ import os
 from google.cloud import texttospeech
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "text-to-speech-key.json"
-target_text = "이거 들리나요"
+# target_text = "이거 들리나요"
 def create_tts(target_text):
     # Instantiates a client
 
@@ -41,4 +41,3 @@ def create_tts(target_text):
         out.write(response.audio_content)
         print('Audio content written to file "output.mp3"')
 
-create_tts(target_text)
