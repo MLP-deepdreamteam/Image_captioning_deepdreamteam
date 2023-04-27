@@ -15,6 +15,17 @@ import pickle
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.applications.xception import Xception
+import os
+import tensorflow as tf
+
+os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'false'
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
+# Now you can continue with your code
+
+
+
+
 
 def load_tokenizer(pkl_path):
     with open(pkl_path, "rb") as f:
@@ -44,8 +55,8 @@ def extract_features(filename, model, model_e = 'xception'):
         image = np.array(image)
         
         # for images that has 4 channels, we convert them into 3 channels
-        # if image.shape[2] == 4: 
-        #     image = image[..., :3]
+        if image.shape[2] == 4: 
+            image = image[..., :3]
         image = np.expand_dims(image, axis=0)
         image = image/127.5
         image = image - 1.0

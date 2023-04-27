@@ -5,17 +5,27 @@
     <title>Document</title>
 </head>
 <body>
+
+
+
+
+
     <div class="container">
         <article>
 			<nav aria-label="breadcrumb">
 				<ul>
                   <li><a href="{{ url_for('home') }}">Home</a></li>
                   <li><a href="{{ url_for('index') }}">Service</a></li>
-				  <li>Project</li>
-				  
+				  <li>Project ideas</li>
+				  <li><a href="{{ url_for('about') }}">About us</a></li>
 				</ul>
 			</nav>
 		</article>
+        
+    <h1>로그인 기능 / 로그인 통해 각자 저장된 이미지를 나중에 다시 조회하는 기능</h1>
+    <h2>접근성 기능 / 사용자 명령(음성, STT)를 통해서 해당 사이트 동작 확인 / TTS 를 통해 사이트 설명</h2>
+    <h2>beam search 통해 여러 캡션 동시생성/ 여러이미지 동시에 캡션생성</h2>
+    <h2>개선 : 모델 정확도 / 모델 로드 속도 최적화 / 사용자 모델 설정</h2>
     
 </body>
 </html>
