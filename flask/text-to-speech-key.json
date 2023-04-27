@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "windy-album-363313",
+    "private_key_id": "e047ff5f3c3619f33911a808204ca0436134e919",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDfNzQpx2lWKNkz\nb/5xRyJXidrJhraobYkfAvKlUCCvTDbcw5rEnnu+mriccMzlru2NOVBLnM3O6nhQ\nef6d5vTxm4K44IAN6LZ3UbC7gVUnXupbtBLeqC6Tjr0dc5tbIKJD2htPbkAVCtst\ndMotHwR9zrLJ2R0aQ66rfu8nRjTgOUL3+ZGL9FmBiTO2A4jEIpslfR7rrwYOIobJ\n4UC/LJI+w7akGDLe+tSEOdRaB/BYUzQTOE90zHvQRk1A+Z7QN5AS2ZCC73P1w4MN\nUQsmp5NfKxCDxCzPIzwSC03qFEH9td6PM5EynsGqiDEc02VXpuqiPl5ewMNmLWcM\n/kZrinlpAgMBAAECggEAEuoBVknyq82VzAVBJPWfXBYPDzUGTMLNU+6iw23E+z2k\nx3OerWr1dtry6jSntA2szOLuoh2VFeOp0r3nnJcpqcBg5QwG5cbSkU0/gb/tiILD\nLoaVc78CBVhav4BgiWn8Pe4hEsu3i+Dp3hHvoL+oWIW3giGO1P8nsZn1p1kMWXRw\nINM0HON/geaQHy+hKAe8Z2iJMz/yh5RuBb+b9LPkwgnLLOFkc4tDg8+JsOmCSS50\nZsP7xyUO7wlT683b9+xiKyIUdPtdqD9qW3h63z4Lrq8aBJoIs+BCRYFsf4bvrTRh\ns4/YFFBYaGlymi6si/WuSAF60d5W8bPZ8O/qKDeHAQKBgQD6r4Svik7tP4fz95Li\nJXCV1UUEgGXNnxknuOrUJ7cmkNvhh+XR4D0PpqjxVs7l10Ou3Ku+yYSlBLyMIG1L\nCXVRoFtTkCIKEg3VKTJzpJ+uCA5cd2BuNFCBpu/YajneZw5CnoFWaWMP9L5PTXC1\nkUMPtPlyVg5gwUcEcwodtkuR6QKBgQDj8prNX3D3hDYlj0TgHwdgV0lftFW2QpNs\nCPJhjz+aCP6+0yBlfiBWd1a1p0HiCCeRmoU11hpNDtqUZLROQSimH5huBKOwAEPG\nZeVj2unsYgNT9PgIC3rMgAb6sY//qYGvdz72uZYD5Jvi0XtWzxqUvmukTJfu3T4V\nBrs18aN7gQKBgQDqUWlK05LWvA2OAxmufKRxyPlMLd/6hP30XSpSyBSv3bNJacdt\nl5Y7rOI5Q5T8zWucZPO7z41G2diLejvuaZbZh3QV9aF7nEiFuI5J/dSrzSfvUj42\nhHvD1JBXz2Lr+ZQgvRvT84n+/hts8MurS25NnjGTp9Ckq8R/6i/Ief7FEQKBgBHI\npq0pKg4VgYfyooP9x7yLcs0Fq745eXjvRcG4xFSHKSDIJfnlGi7Exr4LW4d/7V5d\nuNDXcFvcsc7sAGkuijZTtre2ovKjQqZi4r+kn6VyjCHrtcIi6ySzRFggrERc/CIt\nYnsrRXnuRv8uKro+FCvQo2NBGoVnO2W2jbqKrJ+BAoGBAPOpgm4QUst/NC9WnriT\nrNhpR85M/wC6EMfns/sTsjMlA9be0F2ehOX9l9VwLGxSfJrqC8lkeHOxsNWPkxLS\n2Xegsi56xUyPtnBTspDr8PAUjzHTCAB63b4uHoptb2uGyNVubCa6DBraSafJFxJ1\niiXdLx6mHCtCuAA4+eGQcJGv\n-----END PRIVATE KEY-----\n",
+    "client_email": "text-to-speech-quickstart@windy-album-363313.iam.gserviceaccount.com",
+    "client_id": "110904132629988208666",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/text-to-speech-quickstart%40windy-album-363313.iam.gserviceaccount.com"
+  }

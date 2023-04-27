@@ -2,7 +2,10 @@
 <html lang="ko">
 <head>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+	<script type="text/javascript" src="./static/scripts.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>Document</title>
+
 </head>
 <body>
 	<div class="container">
@@ -11,8 +14,8 @@
 				<ul>
 				  <li><a href="{{ url_for('home') }}">Home</a></li>
 				  <li>Service</li>
-				  <li><a href="{{ url_for('project') }}">Project</a></li>
-				  
+				  <li><a href="{{ url_for('project') }}">Project ideas</a></li>
+				  <li><a href="{{ url_for('about') }}">About us</a></li>
 				</ul>
 			</nav>
 		</article>
@@ -24,89 +27,10 @@
 		<form method="POST" action="/predict" enctype="multipart/form-data" onsubmit="return validateForm()">
 			<input type="file" name="image" id="image" onchange="activateSubmit()" accept="image/*" required>
 			<!-- <input type="file" name="image" id="image" onchange="handleImageView(this.files)"> -->
-			  <!-- <button type="submit">Generate Caption</button> -->
 			<input type="submit" id="submit" value="Generate Caption" disabled >
 		</form>
 		</article>
+
 	</div>
-		<!-- 참고용(현재 사용하진않음) -->
-		<script type="text/javascript">
-		function handleImageView(files){		
-				 var file = files[0];
-		 
-				 if(!file.type.match(/image.*/)){
-					 alert("not image file!");
-				 }			
-				 var reader = new FileReader();
-				 
-				 reader.onload = function(e){
-					 
-					 var img = new Image();
-					 img.onload = function(){
-						 var ctx = document.getElementById("cview").getContext("2d");
-						 ctx.drawImage(img,0,0,480,320);
-					 }
-					 img.src = e.target.result;
-				 }
-				 
-				 reader.readAsDataURL(file);
-			 }
-		 </script>
-		 
-		 <!-- 이미지 업로드시 submit 버튼 활성화 스크립트 -->
-		 <script>
-			function validateForm() {
-				var imageInput = document.getElementById("image");
-				var submitButton = document.getElementById("submit");
-		
-				if (imageInput.value == "") {
-					submitButton.disabled = true;
-					return false;
-				} else {
-					submitButton.disabled = false;
-					return true;
-				}
-			}
-		
-			function activateSubmit() {
-				var submitButton = document.getElementById("submit");
-				submitButton.disabled = false;
-			}
-		</script>
-
-		<!-- 이미지 미리보기 스크립트 -->
-		<script>
-			function previewImage() {
-				var preview = document.getElementById('uploaded-image');
-				var file = document.getElementById('image').files[0];
-				if (!file.type.match('image.*')) {
-					alert('Please select an image file');
-					document.getElementById('image').value = '';
-					preview.innerHTML = '';
-					return;
-				}
-				var reader = new FileReader();
-				reader.onloadend = function() {
-					var img = new Image();
-					img.src = reader.result;
-					img.onload = function() {
-						var canvas = document.createElement('canvas');
-						var ctx = canvas.getContext('2d');
-						canvas.width = 420;
-						canvas.height = 420;
-						ctx.drawImage(img, 0, 0, 420, 420);
-						preview.innerHTML = '<img src="' + canvas.toDataURL() + '" alt="Uploaded Image">';
-					};
-				};
-				if (file) {
-					reader.readAsDataURL(file);
-				} else {
-					preview.innerHTML = '';
-				}
-			}
-			document.getElementById('image').addEventListener('change', previewImage);
-		</script>
-
-
 </body>
 </html>

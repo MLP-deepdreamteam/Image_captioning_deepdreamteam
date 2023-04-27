@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+	<script type="text/javascript" src="./static/scripts.js" defer></script>
+	<title>Document</title>
 </head>
 <body>
+	<div class="container">
+		<article>
+			<nav aria-label="breadcrumb">
+				<ul>
+				  <li><a href="{{ url_for('home') }}">Home</a></li>
+				  <li><a href="{{ url_for('index') }}">Service</a></li>
+				  <li><a href="{{ url_for('project') }}">Project ideas</a></li>
+				  <li><a href="{{ url_for('about') }}">About us</a></li>
+				</ul>
+			</nav>
+		</article>
+
+		<article>
+    <img src="{{fileimg}}" height="420",width="420">
+    <p>Prediction: {{ pred }}</p>
+    <p>translate to korean : {{trans}}</p>
+	Audio for English :
+    <audio controls>
+        <source src="{{ audio_file_en }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+	<br>
+	Audio for Korean :
+	<audio controls>
+        <source src="{{ audio_file_ko }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <br>
-    <img src="{{fileimg}}" height="400",width="400">
+    {{id_key}}
     <br>
-    {{pred}}
-    <br>
-    translation to korean :
-    <br>
-    ID : {{id_key}}
-    <br>
-    <a href="{{ url_for('index') }}">Back</a>
-    
+    <!-- <a href="{{ url_for('index') }}">Back to service</a> -->
+    <button type="button" onclick="location.href='{{ url_for('index') }}' ">Back to Service</button>
+        </article>
 </body>
 </html>
